@@ -1,5 +1,7 @@
 <?php
-
+use App\User;
+use App\Conteudo;
+use App\Comentario;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,3 +16,34 @@ Route::post('/cadastro', "UsuarioController@cadastro");
 Route::post('/login', "UsuarioController@login");
 Route::middleware('auth:api')->get('/usuario', "UsuarioController@usuario");
 Route::middleware('auth:api')->put('/perfil', "UsuarioController@perfil");
+
+Route::get('/testes', function (){
+    $user = User::find(1);
+    $user2 = User::find(2);
+    /* 
+    $user->conteudos()->create([
+        'titulo' => 'Conteudo 3', 
+        'texto' => 'Aqui é o texto', 
+        'imagem' => 'url da imagem', 
+        'link' => 'link', 
+        'data' => '2021-05-15',
+    ]);
+    return $user->conteudos; 
+    */
+
+    // add amigo:
+    //$user->curtidas()->toggle($conteudo->id);
+
+    // add curtidas
+    //$conteudo = Conteudo::find(1);
+    //$user->curtidas()->toggle($conteudo->id);
+
+    // add comentarios
+
+    $user->comentarios()->create([
+        'conteudo_id' => 'Conteudo 3', 
+        'texto' => 'Aqui é o texto', 
+        'data' => '2021-05-15',
+    ]);
+    return $user->conteudos; 
+});
