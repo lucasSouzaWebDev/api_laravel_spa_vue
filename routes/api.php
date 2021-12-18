@@ -35,15 +35,20 @@ Route::get('/testes', function (){
     //$user->curtidas()->toggle($conteudo->id);
 
     // add curtidas
-    //$conteudo = Conteudo::find(1);
+    $conteudo = Conteudo::find(1);
     //$user->curtidas()->toggle($conteudo->id);
 
     // add comentarios
 
     $user->comentarios()->create([
-        'conteudo_id' => 'Conteudo 3', 
+        'conteudo_id' => $conteudo->id, 
         'texto' => 'Aqui é o texto', 
         'data' => '2021-05-15',
     ]);
-    return $user->conteudos; 
+    $user2->comentarios()->create([
+        'conteudo_id' => $conteudo->id, 
+        'texto' => 'Brabo', 
+        'data' => '2021-05-15',
+    ]);
+    return $conteudo->comentarios; 
 });
