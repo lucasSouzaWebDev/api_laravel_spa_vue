@@ -14,7 +14,6 @@ use App\Comentario;
 */
 Route::post('/cadastro', "UsuarioController@cadastro");
 Route::post('/login', "UsuarioController@login");
-Route::middleware('auth:api')->get('/usuario', "UsuarioController@usuario");
 Route::middleware('auth:api')->put('/perfil', "UsuarioController@perfil");
 
 Route::get('/testes', function (){
