@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\User', 'amigos', 'user_id', 'amigo_id');
     }
+
+    public function getImagemAttribute($value)
+    {
+        return asset($value);
+    }
 }
