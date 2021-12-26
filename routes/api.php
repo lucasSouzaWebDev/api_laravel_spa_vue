@@ -21,6 +21,11 @@ Route::middleware('auth:api')->get('/conteudo/lista', "ConteudoController@lista"
 Route::get('/testes', function (){
     $user = User::find(1);
     $user2 = User::find(2);
+
+    /* $conteudos = Conteudo::all();
+    foreach ($conteudos as $conteudo) {
+        $conteudo->delete();
+    } */
     /* 
     $user->conteudos()->create([
         'titulo' => 'Conteudo 3', 
@@ -36,7 +41,7 @@ Route::get('/testes', function (){
     //$user->curtidas()->toggle($conteudo->id);
 
     // add curtidas
-    $conteudo = Conteudo::find(1);
+    /* $conteudo = Conteudo::find(1);
     //$user->curtidas()->toggle($conteudo->id);
 
     // add comentarios
@@ -51,5 +56,5 @@ Route::get('/testes', function (){
         'texto' => 'Brabo', 
         'data' => '2021-05-15',
     ]);
-    return $conteudo->comentarios; 
+    return $conteudo->comentarios;  */
 });

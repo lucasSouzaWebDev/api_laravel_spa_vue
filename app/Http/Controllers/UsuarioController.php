@@ -135,8 +135,9 @@ class UsuarioController extends Controller
                 mkdir($directory, 0700);
             }
             if ($user->imagem) {
-                if (file_exists($user->imagem)) {
-                    unlink($user->imagem);
+                $imgUser = str_replace(asset('/'), '', $user->imagem);
+                if (file_exists($imgUser)) {
+                    unlink($imgUser);
                 }
             }
             if (!file_exists($imageDirectory)) {
