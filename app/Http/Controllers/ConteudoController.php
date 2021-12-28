@@ -40,4 +40,15 @@ class ConteudoController extends Controller
         $conteudos = Conteudo::with('user')->orderBy('data', 'DESC')->paginate(5);
         return ['status' => true, 'conteudos' => $conteudos];
     }
+
+    public function curtir($id, Request $request)
+    {
+        $conteudo = Conteudo::find($id);
+        if(!$conteudo){
+            return ['status' => false, 'erro' => 'Conteudo não existe.'];
+        }
+        $user = $request->user();
+        $user->curtidas()->toggle($conteudo->id);
+        return ['status' => true, 'curtidas' => $conteudo->curtidas()->count()];
+    }
 }
