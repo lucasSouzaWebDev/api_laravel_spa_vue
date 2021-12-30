@@ -24,4 +24,9 @@ class Conteudo extends Model
     {
         return $this->belongsToMany('App\User', 'curtidas', 'conteudo_id', 'user_id');
     }
+
+    public function getDataAttribute($value)
+    {
+        return date('H\hi d/m/Y', strtotime($value));
+    }
 }

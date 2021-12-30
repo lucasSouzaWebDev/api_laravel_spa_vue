@@ -19,4 +19,9 @@ class Comentario extends Model
     {
         return $this->belongsTo('App\Conteudo');
     }
+
+    public function getDataAttribute($value)
+    {
+        return date('H\hi d/m/Y', strtotime($value));
+    }
 }
