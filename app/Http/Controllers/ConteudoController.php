@@ -69,4 +69,19 @@ class ConteudoController extends Controller
         $user->curtidas()->toggle($conteudo->id);
         return ['status' => true, 'curtidas' => $conteudo->curtidas()->count(), 'lista' => $this->lista($request)];
     }
+
+    public function comentar($id, Request $request)
+    {
+        $conteudo = Conteudo::find($id);
+        if(!$conteudo){
+            return ['status' => false, 'erro' => 'Conteudo não existe.'];
+        }
+        $user = $request->user();
+        $user->comentarios()->create([
+            'conteudo_id' => $conteudo->id, 
+            'texto' => $request->texto, 
+            'data' => '2021-05-15',
+        ]);
+        return ['status' => true, 'lista' => $this->lista($request)];
+    }
 }
