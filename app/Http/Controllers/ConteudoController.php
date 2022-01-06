@@ -11,14 +11,10 @@ class ConteudoController extends Controller
 {
     public function lista(Request $request)
     {
-        /* $user = $request->user();
-        $user->comentarios()->create([
-                'conteudo_id' => 11, 
-                'texto' => 'Aqui é o texto', 
-                'data' => date('Y-m-d H:i:s'),
-            ]); */
-        $conteudos = Conteudo::with('user')->orderBy('data', 'DESC')->paginate(5);
         $user = $request->user();
+        $amigos = $user->amigos()->pluck('id');
+        $amigos->push($user->id);
+        $conteudos = Conteudo::whereIn('user_id', $amigos)->with('user')->orderBy('data', 'DESC')->paginate(5);
 
         foreach($conteudos as $key => $conteudo){
             $conteudo->total_curtidas = $conteudo->curtidas()->count();
