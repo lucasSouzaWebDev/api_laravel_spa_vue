@@ -1,7 +1,5 @@
 <?php
-use App\User;
-use App\Conteudo;
-use App\Comentario;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,44 +25,3 @@ Route::middleware('auth:api')->get('/conteudo/pagina/lista/{id}', "ConteudoContr
 Route::middleware('auth:api')->post('/usuario/amigo', "UsuarioController@amigo");
 Route::middleware('auth:api')->get('/usuario/listaamigos', "UsuarioController@listaamigos");
 Route::middleware('auth:api')->get('/usuario/listaamigospagina/{id}', "UsuarioController@listaamigospagina");
-
-Route::get('/testes', function (){
-    $user = User::find(1);
-    $user2 = User::find(2);
-
-    /* $conteudos = Conteudo::all();
-    foreach ($conteudos as $conteudo) {
-        $conteudo->delete();
-    } */
-    /* 
-    $user->conteudos()->create([
-        'titulo' => 'Conteudo 3', 
-        'texto' => 'Aqui é o texto', 
-        'imagem' => 'url da imagem', 
-        'link' => 'link', 
-        'data' => '2021-05-15',
-    ]);
-    return $user->conteudos; 
-    */
-
-    // add amigo:
-    //$user->curtidas()->toggle($conteudo->id);
-
-    // add curtidas
-    /* $conteudo = Conteudo::find(1);
-    //$user->curtidas()->toggle($conteudo->id);
-
-    // add comentarios
-
-    $user->comentarios()->create([
-        'conteudo_id' => $conteudo->id, 
-        'texto' => 'Aqui é o texto', 
-        'data' => '2021-05-15',
-    ]);
-    $user2->comentarios()->create([
-        'conteudo_id' => $conteudo->id, 
-        'texto' => 'Brabo', 
-        'data' => '2021-05-15',
-    ]);
-    return $conteudo->comentarios;  */
-});
